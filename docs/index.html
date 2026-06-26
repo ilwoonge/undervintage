@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#f3ecdd;
@@ -20,16 +20,20 @@
   --gold:#b08d3f;
   --gold-bright:#d4af5e;
   --rust:#9a4a2e;
+  --font-display:'Instrument Serif','Noto Sans KR',serif;
+  --font-sans:'Inter','Noto Sans KR',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--paper);
   color:var(--ink);
-  font-family:'Gowun Batang','Cormorant Garamond',serif;
-  line-height:1.75;
+  font-family:var(--font-sans);
+  line-height:1.72;
   overflow-x:hidden;
   word-break:keep-all;
+  font-weight:400;
+  letter-spacing:0;
 }
 ::selection{background:var(--gold);color:var(--espresso)}
 
@@ -39,8 +43,8 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.serif-display{font-family:'Italiana','Gowun Batang',serif}
-.eng{font-family:'Cormorant Garamond',serif}
+.serif-display{font-family:var(--font-display)}
+.eng{font-family:var(--font-sans)}
 
 /* ───────────── header ───────────── */
 header{
@@ -50,7 +54,7 @@ header{
   transition:background .4s ease, box-shadow .4s ease;
 }
 header.scrolled{background:rgba(243,236,221,.94);box-shadow:0 1px 0 rgba(43,33,24,.18)}
-.logo{font-family:'Italiana',serif;font-size:1.35rem;letter-spacing:.32em;text-decoration:none;color:var(--paper);transition:color .4s;text-shadow:0 1px 8px rgba(30,22,16,.55)}
+.logo{font-family:var(--font-display);font-size:1.35rem;letter-spacing:.12em;text-decoration:none;color:var(--paper);transition:color .4s;text-shadow:0 1px 8px rgba(30,22,16,.55)}
 .logo em{color:var(--gold-bright);font-style:normal}
 header.scrolled .logo{color:var(--ink);text-shadow:none}
 header.scrolled .logo em{color:var(--gold)}
@@ -59,7 +63,7 @@ header.scrolled .logo img{box-shadow:0 2px 12px rgba(30,22,16,.28)}
 .logo:hover img{transform:scale(1.05)}
 nav{display:flex;gap:2.2rem}
 nav a{
-  font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.22em;
+  font-family:var(--font-sans);font-size:.78rem;font-weight:600;letter-spacing:.11em;
   text-transform:uppercase;text-decoration:none;color:rgba(243,236,221,.92);
   position:relative;padding-bottom:.2rem;transition:color .4s;
   text-shadow:0 1px 8px rgba(30,22,16,.55);
@@ -72,7 +76,7 @@ nav a:hover::after{width:100%}
   .logo{font-size:1.1rem}
   .logo img{width:46px;height:46px}
   nav{gap:1.15rem}
-  nav a{font-size:.74rem;letter-spacing:.14em;padding-bottom:.1rem}
+  nav a{font-size:.68rem;letter-spacing:.07em;padding-bottom:.1rem}
 }
 
 /* ───────────── hero ───────────── */
@@ -100,19 +104,29 @@ nav a:hover::after{width:100%}
 .hero-frame::before{top:-8px;left:-8px;border-right:none;border-bottom:none}
 .hero-frame::after{bottom:-8px;right:-8px;border-left:none;border-top:none}
 .hero-est{
-  font-family:'Cormorant Garamond',serif;letter-spacing:.5em;font-size:.85rem;
+  font-family:var(--font-sans);font-weight:600;letter-spacing:.24em;font-size:.78rem;
   color:var(--gold-bright);text-transform:uppercase;margin-bottom:1.6rem;
   animation:rise 1.1s .15s both;
 }
 .hero h1{
-  font-family:'Italiana',serif;font-weight:400;
-  font-size:clamp(3rem,9.5vw,7.5rem);
-  letter-spacing:.12em;line-height:1.05;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(3.3rem,9vw,7.4rem);
+  letter-spacing:.055em;line-height:.96;
   animation:rise 1.1s .35s both;
 }
-.hero h1 span{display:block;font-size:.42em;letter-spacing:.5em;margin-top:.7rem;color:var(--gold-bright)}
+.hero h1 span{
+  display:block;
+  font-family:var(--font-sans);
+  font-size:.24em;
+  font-weight:600;
+  letter-spacing:.24em;
+  line-height:1.6;
+  margin-top:1.1rem;
+  color:var(--gold-bright);
+}
 .hero-sub{
-  margin-top:2.2rem;max-width:34rem;font-size:1.02rem;color:rgba(243,236,221,.85);
+  margin-top:2rem;max-width:36rem;font-size:1rem;color:rgba(243,236,221,.84);
+  text-shadow:0 1px 10px rgba(30,22,16,.48);
   animation:rise 1.1s .6s both;
 }
 .hero-rule{
@@ -121,7 +135,7 @@ nav a:hover::after{width:100%}
 }
 .scroll-hint{
   position:absolute;bottom:2.6rem;left:50%;transform:translateX(-50%);
-  font-family:'Cormorant Garamond',serif;font-size:.78rem;letter-spacing:.4em;
+  font-family:var(--font-sans);font-size:.68rem;font-weight:600;letter-spacing:.26em;
   color:rgba(243,236,221,.7);text-transform:uppercase;
   animation:bob 2.4s ease-in-out infinite;
 }
@@ -137,7 +151,7 @@ nav a:hover::after{width:100%}
 }
 .marquee-track{display:inline-block;animation:slide 30s linear infinite}
 .marquee span{
-  font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.35em;
+  font-family:var(--font-sans);font-size:.78rem;font-weight:600;letter-spacing:.18em;
   text-transform:uppercase;margin:0 1.8rem;
 }
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -146,19 +160,19 @@ nav a:hover::after{width:100%}
 section{padding:7rem 1.5rem}
 .wrap{max-width:1100px;margin:0 auto}
 .kicker{
-  font-family:'Cormorant Garamond',serif;letter-spacing:.45em;font-size:.82rem;
+  font-family:var(--font-sans);font-weight:700;letter-spacing:.18em;font-size:.74rem;
   text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;
 }
 h2{
-  font-family:'Italiana','Gowun Batang',serif;font-weight:400;
-  font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:.06em;line-height:1.2;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,4.5vw,3.45rem);letter-spacing:0;line-height:1.12;
 }
 .flourish{display:block;width:150px;height:20px;margin-top:1.6rem;color:var(--gold)}
 
 /* about */
 .about .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5rem;align-items:center}
 .about p{margin-top:1.4rem;color:var(--ink-soft);font-size:1.02rem}
-.about strong{color:var(--ink);font-weight:700}
+.about strong{color:var(--ink);font-weight:600}
 .about-photo{position:relative}
 .about-photo img{
   width:100%;display:block;
@@ -166,8 +180,8 @@ h2{
 }
 .about-photo::after{
   content:"SINCE 2026 · INCHEON";position:absolute;top:-12px;right:-8px;
-  background:var(--rust);color:var(--paper);font-family:'Cormorant Garamond',serif;
-  font-size:.72rem;letter-spacing:.28em;padding:.45rem .9rem;transform:rotate(3deg);
+  background:var(--rust);color:var(--paper);font-family:var(--font-sans);font-weight:700;
+  font-size:.66rem;letter-spacing:.14em;padding:.45rem .9rem;transform:rotate(3deg);
 }
 @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:3rem}}
 
@@ -181,13 +195,13 @@ h2{
 }
 .coll-card:hover{border-color:var(--gold-bright);transform:translateY(-6px)}
 .coll-card .num{
-  font-family:'Italiana',serif;font-size:.85rem;letter-spacing:.3em;color:var(--gold-bright);
+  font-family:var(--font-sans);font-weight:700;font-size:.68rem;letter-spacing:.18em;color:var(--gold-bright);
 }
 .coll-card h3{
-  font-family:'Italiana',serif;font-weight:400;font-size:1.7rem;letter-spacing:.1em;
+  font-family:var(--font-display);font-weight:400;font-size:2rem;letter-spacing:.03em;line-height:1;
   margin:.9rem 0 .4rem;
 }
-.coll-card .ko{font-size:.95rem;color:var(--gold-bright);letter-spacing:.2em}
+.coll-card .ko{font-size:.88rem;font-weight:600;color:var(--gold-bright);letter-spacing:.08em}
 .coll-card p{margin-top:1.1rem;font-size:.93rem;color:rgba(243,236,221,.72)}
 @media(max-width:860px){.coll-grid{grid-template-columns:1fr}}
 
@@ -204,8 +218,8 @@ h2{
   position:absolute;left:0;right:0;bottom:0;
   padding:2.2rem 1.4rem .95rem;
   background:linear-gradient(transparent,rgba(30,22,16,.82));
-  color:var(--paper);font-family:'Cormorant Garamond',serif;
-  font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--paper);font-family:var(--font-sans);font-weight:600;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
 }
 .g-1{grid-column:1/9;aspect-ratio:16/10}
 .g-2{grid-column:9/13;grid-row:1/3;aspect-ratio:auto}
@@ -245,13 +259,13 @@ h2{
 }
 .frame-edge{
   position:absolute;top:8px;left:9px;z-index:2;
-  font-family:'Courier New',monospace;font-size:.6rem;letter-spacing:.18em;
+  font-family:'Courier New',monospace;font-size:.6rem;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(243,236,221,.82);
   background:rgba(0,0,0,.4);padding:.12rem .42rem;
 }
 .frame figcaption{
   margin-top:.7rem;text-align:center;
-  font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.26em;
+  font-family:var(--font-sans);font-size:.68rem;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(243,236,221,.72);
 }
 @media(hover:hover) and (pointer:fine){
@@ -259,7 +273,7 @@ h2{
 }
 .film-hint{
   display:block;margin:1.6rem auto 0;text-align:center;
-  font-family:'Cormorant Garamond',serif;font-size:.74rem;letter-spacing:.4em;
+  font-family:var(--font-sans);font-size:.68rem;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold);
 }
 @media(max-width:720px){
@@ -279,8 +293,8 @@ h2{
 }
 .visit dl{display:grid;grid-template-columns:auto 1fr;gap:.7rem 1.6rem;margin-top:.4rem}
 .visit dt{
-  font-family:'Cormorant Garamond',serif;letter-spacing:.25em;text-transform:uppercase;
-  font-size:.8rem;color:var(--gold);padding-top:.25rem;white-space:nowrap;
+  font-family:var(--font-sans);font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  font-size:.72rem;color:var(--gold);padding-top:.25rem;white-space:nowrap;
 }
 .visit dd{font-size:.98rem;color:var(--ink-soft)}
 .visit-note{margin-top:1.8rem;font-size:.9rem;color:var(--rust);font-style:italic}
@@ -292,12 +306,12 @@ h2{
 }
 .visit-photo::after{
   content:"OPEN — COME IN :)";position:absolute;top:-12px;left:-8px;
-  background:var(--rust);color:var(--paper);font-family:'Cormorant Garamond',serif;
-  font-size:.72rem;letter-spacing:.28em;padding:.45rem .9rem;transform:rotate(-3deg);
+  background:var(--rust);color:var(--paper);font-family:var(--font-sans);font-weight:700;
+  font-size:.66rem;letter-spacing:.14em;padding:.45rem .9rem;transform:rotate(-3deg);
 }
 .visit-photo figcaption{
-  margin-top:1.1rem;text-align:center;font-family:'Cormorant Garamond',serif;
-  font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  margin-top:1.1rem;text-align:center;font-family:var(--font-sans);font-weight:600;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
 }
 @media(max-width:860px){.visit .wrap{grid-template-columns:1fr}}
 
@@ -321,11 +335,15 @@ footer .logo{color:var(--paper);font-size:1.5rem;display:inline-block;margin-bot
   box-shadow:0 0 0 1px rgba(176,141,63,.35),0 10px 26px rgba(0,0,0,.5);
 }
 footer p{font-size:.82rem;letter-spacing:.12em}
-footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spacing:.3em;font-size:.72rem;text-transform:uppercase;color:var(--gold)}
+footer .fine{margin-top:1.6rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.16em;font-size:.68rem;text-transform:uppercase;color:var(--gold)}
 
 @media(max-width:720px){
   section{padding:4.5rem 1.25rem}
-  .hero-est{letter-spacing:.28em;font-size:.76rem}
+  .hero{padding:7rem 1.25rem 4rem}
+  .hero-est{letter-spacing:.15em;font-size:.68rem}
+  .hero h1{font-size:clamp(3rem,16vw,4.85rem);letter-spacing:.025em}
+  .hero h1 span{font-size:.19em;letter-spacing:.14em;margin-top:.9rem}
+  .hero-sub{font-size:.95rem;line-height:1.9;color:rgba(243,236,221,.88)}
 }
 
 /* reveal on scroll */
@@ -536,10 +554,9 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
       </p>
       <div class="visit-card">
         <dl>
-          <dt>Open</dt><dd>매일 · 12:00 — 21:00</dd>
-          <dt>Address</dt><dd>인천시 어딘가, 골목 끝 지하 1층</dd>
-          <dt>Contact</dt><dd>ilwoonge@gmail.com</dd>
-          <dt>Instagram</dt><dd>@under.vintage</dd>
+          <dt>Open</dt><dd>매일 · 07:00 ~ 22:00</dd>
+          <dt>Address</dt><dd>인천광역시 서구 서곶로 300 (심곡로) 지하 1층</dd>
+          <dt>Detail</dt><dd>서곶로 300 투썸건물 지하 1층 · 서구청역 1번출구 나와서 10걸음</dd>
         </dl>
         <p class="visit-note">* 모든 상품은 단 한 점뿐이라, 어제 본 그 옷이 오늘은 없을 수도 있어요.</p>
       </div>
