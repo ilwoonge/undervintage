@@ -51,16 +51,22 @@ def vintage(im: Image.Image, max_w: int = MAX_W) -> Image.Image:
 for i in range(1, 5):
     src = os.path.join(SRC, f"photo{i}.jpeg")
     out = os.path.join(OUT, f"photo{i}.jpg")
+    if not os.path.exists(src):
+        print("skip (missing source):", src)
+        continue
     img = vintage(Image.open(src))
     img.save(out, quality=82, optimize=True)
     print(out, img.size)
 
 # Curated underground-shop shots (portrait) for the film-strip section.
 # Sources are the raw .jpeg files dropped straight into docs/images.
-FILMSTRIP = [10, 6, 8, 11, 7]
+FILMSTRIP = [10, 6, 8, 11, 7, 9, 12, 13]
 for i in FILMSTRIP:
     src = os.path.join(OUT, f"photo{i}.jpeg")
     out = os.path.join(OUT, f"photo{i}.jpg")
+    if not os.path.exists(src):
+        print("skip (missing source):", src)
+        continue
     img = vintage(Image.open(src), max_w=1100)
     img.save(out, quality=82, optimize=True)
     print(out, img.size)
