@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNDER VINTAGE — Vintage Clothing &amp; Bags</title>
 <meta name="description" content="시간이 고른 옷과 가방. 빈티지 의류·가방 셀렉트 숍, 언더 빈티지.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
@@ -52,6 +54,9 @@ header.scrolled{background:rgba(243,236,221,.94);box-shadow:0 1px 0 rgba(43,33,2
 .logo em{color:var(--gold-bright);font-style:normal}
 header.scrolled .logo{color:var(--ink);text-shadow:none}
 header.scrolled .logo em{color:var(--gold)}
+.logo img{display:block;width:54px;height:54px;border-radius:50%;box-shadow:0 2px 14px rgba(30,22,16,.5);transition:transform .4s, box-shadow .4s}
+header.scrolled .logo img{box-shadow:0 2px 12px rgba(30,22,16,.28)}
+.logo:hover img{transform:scale(1.05)}
 nav{display:flex;gap:2.2rem}
 nav a{
   font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.22em;
@@ -65,6 +70,7 @@ nav a:hover::after{width:100%}
 @media(max-width:720px){
   header{flex-direction:column;gap:.45rem;padding:.85rem 1rem .7rem}
   .logo{font-size:1.1rem}
+  .logo img{width:46px;height:46px}
   nav{gap:1.15rem}
   nav a{font-size:.74rem;letter-spacing:.14em;padding-bottom:.1rem}
 }
@@ -210,6 +216,58 @@ h2{
   .g-2{aspect-ratio:3/4}
 }
 
+/* the space — film strip */
+.space{padding:7rem 0;overflow:hidden}
+.space .wrap{padding:0 1.5rem}
+.space-lead{margin-top:1.4rem;max-width:33rem;color:var(--ink-soft);font-size:1.02rem}
+.filmstrip{
+  margin-top:3.4rem;background:#161009;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  box-shadow:inset 0 16px 26px -18px #000, inset 0 -16px 26px -18px #000;
+}
+.filmstrip::-webkit-scrollbar{height:0}
+.film-inner{
+  position:relative;display:flex;width:max-content;gap:14px;
+  padding:34px clamp(1rem,6vw,5rem);
+}
+.film-inner::before,.film-inner::after{
+  content:"";position:absolute;left:0;right:0;height:11px;pointer-events:none;
+  background:repeating-linear-gradient(to right,rgba(243,236,221,.85) 0 13px,transparent 13px 31px);
+}
+.film-inner::before{top:11px}
+.film-inner::after{bottom:11px}
+.frame{position:relative;flex:0 0 auto;width:252px;scroll-snap-align:center}
+.frame img{
+  display:block;width:252px;height:366px;object-fit:cover;
+  border:1px solid rgba(0,0,0,.55);filter:saturate(.96);
+  transition:transform .5s ease, filter .5s ease;
+}
+.frame-edge{
+  position:absolute;top:8px;left:9px;z-index:2;
+  font-family:'Courier New',monospace;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(243,236,221,.82);
+  background:rgba(0,0,0,.4);padding:.12rem .42rem;
+}
+.frame figcaption{
+  margin-top:.7rem;text-align:center;
+  font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(243,236,221,.72);
+}
+@media(hover:hover) and (pointer:fine){
+  .frame:hover img{transform:translateY(-5px) scale(1.012);filter:saturate(1.05)}
+}
+.film-hint{
+  display:block;margin:1.6rem auto 0;text-align:center;
+  font-family:'Cormorant Garamond',serif;font-size:.74rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);
+}
+@media(max-width:720px){
+  .frame{width:208px}
+  .frame img{width:208px;height:300px}
+  .film-inner{gap:11px;padding:28px 1.25rem}
+}
+
 /* visit */
 .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .visit-card{
@@ -243,12 +301,25 @@ h2{
 }
 @media(max-width:860px){.visit .wrap{grid-template-columns:1fr}}
 
+/* banner showcase */
+.banner-showcase{display:flex;justify-content:center}
+.banner-frame{
+  max-width:780px;width:100%;line-height:0;padding:10px;background:var(--paper-deep);
+  border:1px solid rgba(176,141,63,.45);box-shadow:0 18px 42px rgba(30,22,16,.24);
+}
+.banner-frame img{width:100%;height:auto;display:block}
+@media(max-width:720px){.banner-frame{padding:6px}}
+
 /* footer */
 footer{
   background:var(--espresso);color:rgba(243,236,221,.65);
   text-align:center;padding:3.6rem 1.5rem 2.8rem;
 }
 footer .logo{color:var(--paper);font-size:1.5rem;display:inline-block;margin-bottom:1.2rem}
+.footer-mark{
+  width:104px;height:104px;border-radius:50%;display:block;margin:0 auto 1.4rem;
+  box-shadow:0 0 0 1px rgba(176,141,63,.35),0 10px 26px rgba(0,0,0,.5);
+}
 footer p{font-size:.82rem;letter-spacing:.12em}
 footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spacing:.3em;font-size:.72rem;text-transform:uppercase;color:var(--gold)}
 
@@ -265,7 +336,7 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
 <body>
 
 <header id="hd">
-  <a class="logo" href="#">UNDER<em>·</em>VINTAGE</a>
+  <a class="logo" href="#" aria-label="UNDER VINTAGE — 홈"><img src="images/logo.png" alt="UNDER VINTAGE 로고"></a>
   <nav>
     <a href="#about">Our Story</a>
     <a href="#collections">Collections</a>
@@ -327,6 +398,49 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
   </div>
 </section>
 
+<!-- THE SPACE -->
+<section class="space" id="space">
+  <div class="wrap reveal">
+    <p class="kicker">The Space · 지하의 공간</p>
+    <h2>필름처럼 넘겨보는<br>지하의 풍경</h2>
+    <svg class="flourish" viewBox="0 0 150 20" fill="none" stroke="currentColor">
+      <path d="M0 10h58M92 10h58" stroke-width="1"/>
+      <circle cx="75" cy="10" r="3.5" stroke-width="1"/>
+    </svg>
+    <p class="space-lead">골목 끝 계단을 내려오면 콘크리트 벽과 형광등 아래로 풍경이 펼쳐집니다. 필름을 넘기듯, 천천히 둘러보세요.</p>
+  </div>
+  <div class="filmstrip reveal" role="list" aria-label="언더 빈티지 지하 매장 내부 사진">
+    <div class="film-inner">
+      <figure class="frame" role="listitem">
+        <span class="frame-edge">UV · 001</span>
+        <img src="images/photo10.jpg" alt="원산지 국가명(USA·MONGOLIA·TURKEY 등)이 새겨진 거울과 접어둔 데님">
+        <figcaption>원산지의 거울</figcaption>
+      </figure>
+      <figure class="frame" role="listitem">
+        <span class="frame-edge">UV · 002</span>
+        <img src="images/photo6.jpg" alt="형광등이 늘어선 지하 매장 통로와 옷걸이">
+        <figcaption>불빛 아래 통로</figcaption>
+      </figure>
+      <figure class="frame" role="listitem">
+        <span class="frame-edge">UV · 003</span>
+        <img src="images/photo8.jpg" alt="니트와 맨투맨이 걸린 빈티지 행거">
+        <figcaption>니트 행거</figcaption>
+      </figure>
+      <figure class="frame" role="listitem">
+        <span class="frame-edge">UV · 004</span>
+        <img src="images/photo11.jpg" alt="테이블 위에 접어 진열한 빈티지 데님">
+        <figcaption>데님 더미</figcaption>
+      </figure>
+      <figure class="frame" role="listitem">
+        <span class="frame-edge">UV · 005</span>
+        <img src="images/photo7.jpg" alt="콘크리트 벽을 따라 늘어선 옷걸이와 스포트라이트">
+        <figcaption>벽을 따라</figcaption>
+      </figure>
+    </div>
+  </div>
+  <span class="film-hint">↔ 옆으로 넘겨보세요 · Swipe</span>
+</section>
+
 <!-- COLLECTIONS -->
 <section class="collections" id="collections">
   <div class="wrap">
@@ -356,6 +470,13 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
       </article>
     </div>
   </div>
+</section>
+
+<!-- BANNER -->
+<section class="banner-showcase">
+  <figure class="banner-frame reveal">
+    <img src="images/logo-banner.png" alt="UNDER VINTAGE — Premium Vintage Market, Selected Vintage Wear. 취급 브랜드: Polo Ralph Lauren, Nike, Adidas, Stüssy, Carhartt.">
+  </figure>
 </section>
 
 <!-- GALLERY -->
@@ -416,7 +537,7 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
 </section>
 
 <footer>
-  <span class="logo serif-display">UNDER<em>·</em>VINTAGE</span>
+  <img class="footer-mark" src="images/logo.png" alt="UNDER VINTAGE 로고">
   <p>시간이 고른 옷과 가방 — 빈티지 셀렉트 숍</p>
   <p class="fine">Est. 2026 · Curated Vintage · Incheon</p>
 </footer>
@@ -425,10 +546,21 @@ footer .fine{margin-top:1.6rem;font-family:'Cormorant Garamond',serif;letter-spa
 const hd = document.getElementById('hd');
 addEventListener('scroll', () => hd.classList.toggle('scrolled', scrollY > 40), {passive:true});
 
+const reveals = document.querySelectorAll('.reveal');
+let ioFired = false;
 const io = new IntersectionObserver(es => {
+  ioFired = true;
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:.15});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+reveals.forEach(el => io.observe(el));
+// Fail-safe: some embedded/preview renderers never deliver IntersectionObserver
+// callbacks (and may not advance CSS transitions). If nothing has fired shortly
+// after load, reveal everything INSTANTLY — kill the transition so there is no
+// fade to get stuck mid-way and content can never sit at opacity:0.
+setTimeout(() => {
+  if (ioFired) return;
+  reveals.forEach(el => { el.style.transition = 'none'; el.classList.add('in'); });
+}, 400);
 </script>
 </body>
 </html>

@@ -11,10 +11,10 @@ os.makedirs(OUT, exist_ok=True)
 MAX_W = 1600
 
 
-def vintage(im: Image.Image) -> Image.Image:
+def vintage(im: Image.Image, max_w: int = MAX_W) -> Image.Image:
     im = ImageOps.exif_transpose(im).convert("RGB")
-    if im.width > MAX_W:
-        im = im.resize((MAX_W, round(im.height * MAX_W / im.width)), Image.LANCZOS)
+    if im.width > max_w:
+        im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
 
     # Desaturate and warm the tones toward sepia
     im = ImageEnhance.Color(im).enhance(0.62)
@@ -52,5 +52,15 @@ for i in range(1, 5):
     src = os.path.join(SRC, f"photo{i}.jpeg")
     out = os.path.join(OUT, f"photo{i}.jpg")
     img = vintage(Image.open(src))
+    img.save(out, quality=82, optimize=True)
+    print(out, img.size)
+
+# Curated underground-shop shots (portrait) for the film-strip section.
+# Sources are the raw .jpeg files dropped straight into docs/images.
+FILMSTRIP = [10, 6, 8, 11, 7]
+for i in FILMSTRIP:
+    src = os.path.join(OUT, f"photo{i}.jpeg")
+    out = os.path.join(OUT, f"photo{i}.jpg")
+    img = vintage(Image.open(src), max_w=1100)
     img.save(out, quality=82, optimize=True)
     print(out, img.size)

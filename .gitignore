@@ -1,2 +1,7 @@
 .DS_Store
 __pycache__/
+
+# Raw photo originals dropped into the deploy folder — the site serves the
+# processed *.jpg versions (built by process_photos.py), so keep the big
+# unedited *.jpeg sources out of docs/images and out of GitHub Pages.
+docs/images/*.jpeg
